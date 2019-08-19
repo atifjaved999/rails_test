@@ -1,0 +1,2 @@
+$("#lists").html("<%= escape_javascript(render 'lists/index', lists: @lists) %>");
+$("#notice").html("<%= flash[:notice] %>");
