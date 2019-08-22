@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :list_items do
+  resources :list_items, only: [:destroy] do
     member do
       post :soft_delete
       post :restore

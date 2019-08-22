@@ -12,10 +12,10 @@
       <td><%= list_item.id %></td>
       <td><%= list_item.name %></td>
       <% if is_trash %>
-        <td><%= link_to 'Restore', restore_list_item_path(list_item), remote: true, method: :post, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Restore', restore_list_item_path(list_item), remote: true, method: :post, data: { confirm: 'Are you sure?' }, class: 'btn btn-success btn-sm' %></td>
       <% else %>
-        <td><%= link_to 'Destroy', soft_delete_list_item_path(list_item), remote: true, method: :post, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Delete', list_item, remote: true, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', soft_delete_list_item_path(list_item), remote: true, method: :post, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
+        <td><%= link_to 'Delete', list_item, remote: true, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
       <% end %>
     </tr>
     <% end %>

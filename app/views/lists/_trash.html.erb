@@ -1,40 +1,42 @@
+<div class="col-lg-8">
+  <h1>Deleted Lists</h1>
+  <% if @deleted_lists.any? %>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th colspan="3">Actions</th>
+        </tr>
+      </thead>
 
-<h1>Deleted Lists</h1>
-
-<table border="1" cellpadding="8">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th colspan="3">Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @deleted_lists.each do |list| %>
-      <tr>
-        <td><%= list.id %></td>
-        <td>
-          <%= list.name %><br>
-          <ul>
-            <% list.list_items.each do |list_item| %>
-              <li>
-                <%= list_item.name %>
-              </li>
-            <% end %>
-          </ul>
-        </td>
-        <td><%= link_to 'Restore', restore_list_path(list), remote: true, method: :post, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
-<h1>Deleted List Items</h1>
-<% if @deleted_list_items.any? %>
-  <%= render 'lists/list_items', list_items: @deleted_list_items, is_trash: true %>
-<% else %>
-  <%= no_record_found %>
-<% end %>
-<br>
-<%= link_to 'Back', lists_path %>
+      <tbody>
+          <% @deleted_lists.each do |list| %>
+            <tr>
+              <td><%= list.id %></td>
+              <td>
+                <%= list.name %><br>
+                <ul>
+                  <% list.list_items.only_deleted.each do |list_item| %>
+                    <li>
+                      <%= list_item.name %>
+                    </li>
+                  <% end %>
+                </ul>
+              </td>
+              <td><%= link_to 'Restore', restore_list_path(list), remote: true, method: :post, data: { confirm: 'Are you sure?' }, class: 'btn btn-success btn-sm' %></td>
+            </tr>
+          <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <%= no_record_found %>
+  <% end %>
+  <br>
+  <h1>Deleted List Items</h1>
+  <% if @deleted_list_items.any? %>
+    <%= render 'lists/list_items', list_items: @deleted_list_items, is_trash: true %>
+  <% else %>
+    <%= no_record_found %>
+  <% end %>
+</div>

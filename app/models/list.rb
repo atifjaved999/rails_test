@@ -6,14 +6,14 @@ class List < ApplicationRecord
 
   include SoftDeletable
 
-  after_update :soft_delete_list_items
+  after_update :soft_delete_list_items, :restore_list_items
   
   def soft_delete_list_items
     list_items.each(&:delete) if deleted
   end
 
-  def soft_delete_list_items
-    list_items.each(&:restore) if deleted
+  def restore_list_items
+    list_items.only_deleted.each(&:restore) unless deleted
   end
 
 end

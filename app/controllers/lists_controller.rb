@@ -25,9 +25,6 @@ class ListsController < ApplicationController
     end
   end
 
-  # def show
-  # end
-
   def edit
     respond_to do |format|
       format.js {}
