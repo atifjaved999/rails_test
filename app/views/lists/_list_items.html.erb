@@ -1,4 +1,4 @@
-<table border="1" cellpadding="5">
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>Id</th>
@@ -14,8 +14,8 @@
       <% if is_trash %>
         <td><%= link_to 'Restore', restore_list_item_path(list_item), remote: true, method: :post, data: { confirm: 'Are you sure?' }, class: 'btn btn-success btn-sm' %></td>
       <% else %>
-        <td><%= link_to 'Destroy', soft_delete_list_item_path(list_item), remote: true, method: :post, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
-        <td><%= link_to 'Delete', list_item, remote: true, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
+        <td><%= link_to 'Destroy', soft_delete_list_item_path(list_item), remote: true, method: :post, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm', title: 'Soft deletion' %></td>
+        <td><%= link_to 'Delete', list_item, remote: true, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm', title: 'Hard deletion' %></td>
       <% end %>
     </tr>
     <% end %>

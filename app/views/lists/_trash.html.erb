@@ -1,4 +1,4 @@
-<div class="col-lg-8">
+<div>
   <h1>Deleted Lists</h1>
   <% if @deleted_lists.any? %>
     <table class="table table-bordered">
@@ -33,7 +33,7 @@
     <%= no_record_found %>
   <% end %>
   <br>
-  <h1>Deleted List Items</h1>
+  <h1>Deleted List Items Only</h1>
   <% if @deleted_list_items.any? %>
     <%= render 'lists/list_items', list_items: @deleted_list_items, is_trash: true %>
   <% else %>
